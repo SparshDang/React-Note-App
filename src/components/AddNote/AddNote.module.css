@@ -1,0 +1,50 @@
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.486);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.container > h2{
+    text-align: center;
+}
+
+.container > textarea { 
+    border-radius: 4px;
+}
+
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.cancel {
+  background-color: salmon;
+  border: 1px solid red;
+}
+
+.add{
+    background-color: greenyellow;
+    border: 1px solid green;
+    color: black;
+}
+
+.error{
+    border: 1px solid red;
+}
