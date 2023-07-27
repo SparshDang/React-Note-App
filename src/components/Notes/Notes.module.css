@@ -12,3 +12,8 @@
 .heading{
     text-align: center;
 }
+
+.empty-notes-message{
+    text-align: center;
+    color: grey;
+}
