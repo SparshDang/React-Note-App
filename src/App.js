@@ -1,23 +1,13 @@
 import { useState } from "react";
+import ReactDom from 'react-dom';
 import Notes from "./components/Notes/Notes";
 import AddNote from "./components/AddNote/AddNote";
 
+import AddNoteButton from "./components/AddNote/AddNoteButton";
+
 function App() {
-  const [addNote, setAddNote] =  useState(true)
-  const [notes, setNotes] =useState([
-    {
-      id:1,
-      text:'This is a note 1'
-    },
-    {
-      id:2,
-      text:'This is a note 2'
-    },
-    {
-      id:3,
-      text:'This is a note 3'
-    },
-  ]);
+  const [addNote, setAddNote] =  useState(false)
+  const [notes, setNotes] =useState([]);
 
   const AddNoteHandler = (text) => {
     setNotes(
@@ -41,6 +31,10 @@ function App() {
     setAddNote(false);
   }
 
+  const openOverlayHandler = () =>{
+    setAddNote(true);
+  }
+
   const deleteNote  = (id) =>{
     setNotes(
       (prev) => {
@@ -52,7 +46,14 @@ function App() {
   return (
     <div>
       <Notes notes={notes} onDelete={deleteNote}/>
-      {addNote && <AddNote onAdd={AddNoteHandler} close={closeOverlay}/>}
+
+      {ReactDom.createPortal(
+        addNote && <AddNote onAdd={AddNoteHandler} close={closeOverlay}/>,
+        document.getElementById('overlay')
+
+      )}
+      {!addNote && <AddNoteButton onOpenAdd={openOverlayHandler}/>}
+
     </div>
   );
 }

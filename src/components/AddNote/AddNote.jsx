@@ -5,6 +5,8 @@ import Button from "../UI/Button";
 import styles from "./AddNote.module.css";
 
 export default function AddNote(props) {
+
+
   const inputRef = useRef();
   const [isError, setIsError] = useState(false);
 
